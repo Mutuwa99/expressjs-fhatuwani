@@ -1,4 +1,4 @@
-name: Deploy Express.js App.
+name: Deploy Express.js App..
 
 on:
   push:
