@@ -1,28 +1,11 @@
-const moongoose = require("mongoose");
-const dotenv = require("dotenv");
+const express = require('express');
+const app = express();
+const PORT = 3000;
 
-//==============Unhandled Exception=============
-
-dotenv.config({
-  path: "./utils/config.env",
+app.get('/', (req, res) => {
+    res.send('Hello, World! This is your Express app.');
 });
-const app = require("./app");
-const DB = process.env.DATABASE;
 
-moongoose.connect(DB, { tls: true }).then((con) =>
-  //console.log(con.Connections)
-  console.log(`DB connected to succesfully `)
-);
-const port = process.env.PORT || 3000;
-const server = app.listen(port, () => {});
-console.log(`app is running on port ${port}`);
-
-//------------------------ERROR OUTSIDE EXPRESS_ UNHANDLED REJECTION----------------------
-
-process.on("unhandledRejection", (err) => {
-  console.log("Unhandled Rejection!!, Shutting...");
-  console.log(err.name, err.message);
-  server.close(() => {
-    process.exit(1);
-  });
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
