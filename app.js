@@ -3,8 +3,10 @@ const app = express();
 const morgan = require("morgan");
 const userRouter = require("./routes/userRoutes");
 const globalErrorHandler = require("./Controller/errorController");
-app.use(express.json());
+const cors = require("cors");
 
+app.use(express.json());
+app.use(cors());
 app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello from my own small App" });
