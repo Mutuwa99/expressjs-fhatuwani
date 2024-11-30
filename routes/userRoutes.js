@@ -8,7 +8,7 @@ const {
   protect,
   updatePassword,
 } = require("../Controller/authController");
-const { getAllUsers } = require("../Controller/userController");
+const { getAllUsers, getUser, getMe } = require("../Controller/userController");
 
 const router = express.Router();
 
@@ -18,5 +18,7 @@ router.post("/forgotpassword", forgotPassword);
 router.patch("/resetPassword/:token", resetPassword);
 router.patch("/updateMyPassword", protect, updatePassword);
 router.get("/getusers", getAllUsers);
+router.get("/:id", getUser);
+router.get("/me", protect, getMe, getUser);
 
 module.exports = router;

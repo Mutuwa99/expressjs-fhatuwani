@@ -46,3 +46,23 @@ exports.updateMe = CatchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.getUser = CatchAsync(async (req, res, next) => {
+  const user = User.findById(req.params.id);
+
+  if (!user) {
+    return next(new AppError("No document found with that ID"), 404);
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      data: user,
+    },
+  });
+});
+exports.getMe = (req, res, next) => {
+  console.log("hello");
+  req.params.id = req.user.id;
+  next();
+};
