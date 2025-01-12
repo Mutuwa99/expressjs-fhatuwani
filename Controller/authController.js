@@ -93,9 +93,7 @@ exports.forgotPassword = CatchAsync(async (req, res, next) => {
 
   //(3) Send Token Via Email
 
-  const resetURL = `${req.protocol}://${req.get("host")}/${
-    process.env.IP_ADDRESS
-  }:${process.env.PORT}/app/v1/users/forgotpassword/${resetToken}`;
+  const resetURL = `${req.protocol}://${process.env.IP_ADDRESS}:${process.env.PORT}/app/v1/users/forgotpassword/${resetToken}`;
 
   const message = `Forgot your password Submit a PATCH request with your new password and 
   password confirm to ${resetURL}.\n If you didn't forget password please Ignore`;
