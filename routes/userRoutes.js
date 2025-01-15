@@ -18,7 +18,7 @@ router.post("/forgotpassword", forgotPassword);
 router.patch("/resetPassword/:token", resetPassword);
 router.patch("/updateMyPassword", protect, updatePassword);
 router.get("/getusers", getAllUsers);
-router.get("/:id", getUser);
-router.get("/me", protect, getMe, getUser);
 
+router.get("/me", protect, getMe, getUser);
+router.get("/:id", getUser);
 module.exports = router;

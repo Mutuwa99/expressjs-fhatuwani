@@ -11,6 +11,7 @@ const filterObj = (obj, ...allowedFields) => {
 };
 
 exports.getAllUsers = CatchAsync(async (req, res) => {
+  console.log("your're in the correct file");
   const users = await User.find();
   res.status(200).json({
     status: "success",
@@ -47,8 +48,14 @@ exports.updateMe = CatchAsync(async (req, res, next) => {
   });
 });
 
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+
+  next();
+};
+
 exports.getUser = CatchAsync(async (req, res, next) => {
-  const user = User.findById(req.params.id);
+  const user = await User.findById(req.params.id);
 
   if (!user) {
     return next(new AppError("No document found with that ID"), 404);
@@ -61,8 +68,3 @@ exports.getUser = CatchAsync(async (req, res, next) => {
     },
   });
 });
-exports.getMe = (req, res, next) => {
-  console.log("hello");
-  req.params.id = req.user.id;
-  next();
-};
