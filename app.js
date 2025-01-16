@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
     .json({ message: "Hello from my own small App soon to be bigger" });
 });
 
-app.use("/app/v1/userss", userRouter);
+app.use("/app/v1/users", userRouter);
 
 app.use("/app/v1/courses", courseRouter);
 
