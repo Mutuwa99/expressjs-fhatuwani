@@ -49,13 +49,20 @@ exports.updateMe = CatchAsync(async (req, res, next) => {
 });
 
 exports.getMe = (req, res, next) => {
-  req.params.id = req.user._id;
+  if (!req.user) {
+    return res.status(404).json({ message: "User not found" });
+  }
 
-  next();
+  res.json({
+    id: req.user._id,
+    name: req.user.name,
+    email: req.user.email,
+    role: req.user.role,
+  });
 };
 
 exports.getUser = CatchAsync(async (req, res, next) => {
-  const user = await User.findById(req.params._id);
+  const user = await User.findById(req.params.id);
 
   if (!user) {
     return next(new AppError("No document found with that ID"), 404);
