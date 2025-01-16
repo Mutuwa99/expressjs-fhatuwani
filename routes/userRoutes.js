@@ -19,6 +19,6 @@ router.patch("/resetPassword/:token", resetPassword);
 router.patch("/updateMyPassword", protect, updatePassword);
 router.get("/getusers", getAllUsers);
 
-router.get("/me", protect, getMe, getUser);
+router.get("/me", protect, getMe);
 router.get("/:id", getUser);
 module.exports = router;
