@@ -21,4 +21,5 @@ router.get("/getusers", getAllUsers);
 
 router.get("/me", protect, getMe);
 router.get("/:id", getUser);
+
 module.exports = router;
