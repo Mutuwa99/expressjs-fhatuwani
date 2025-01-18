@@ -7,7 +7,7 @@ const globalErrorHandler = require("./Controller/errorController");
 const cors = require("cors");
 
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
 
 //app.options("*", cors());
 app.get("/", (req, res) => {
