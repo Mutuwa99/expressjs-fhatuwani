@@ -6,13 +6,10 @@ const courseRouter = require("./routes/coursesRoutes");
 const globalErrorHandler = require("./Controller/errorController");
 const cors = require("cors");
 
-app.use(cors());
-
-app.options("*", cors());
 app.use(express.json());
 app.use(cors());
+app.options("*", cors());
 
-//app.options("*", cors());
 app.get("/", (req, res) => {
   res
     .status(200)
