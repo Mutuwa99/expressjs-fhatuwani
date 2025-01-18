@@ -53,11 +53,14 @@ exports.getMe = (req, res, next) => {
     return res.status(404).json({ message: "User not found" });
   }
 
-  res.json({
-    id: req.user._id,
-    name: req.user.name,
-    email: req.user.email,
-    role: req.user.role,
+  res.status(200).json({
+    status: "success",
+    data: {
+      id: req.user._id,
+      name: req.user.name,
+      email: req.user.email,
+      role: req.user.role,
+    },
   });
 };
 
