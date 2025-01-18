@@ -13,11 +13,6 @@ const signToken = (id) => {
   });
 };
 
-/**
- *
- * 
- 
- */
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
   const cookieOptions = {
@@ -58,7 +53,7 @@ exports.signUp = CatchAsync(async (req, res, next) => {
 
 exports.login = CatchAsync(async (req, res, next) => {
   const { email, password } = req.body;
-
+  console.log("SignIn request received:", req.body);
   //*****************Checking iF Email And Password exist */
   if (!email || !password) {
     return AppError("please provide email or password", 400);
