@@ -53,6 +53,10 @@ const UserSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+  balance: {
+    type: Number,
+    default: 0,
+  },
 });
 
 //=================Encrypting password==================//
