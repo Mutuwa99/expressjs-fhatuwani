@@ -60,6 +60,7 @@ exports.getMe = (req, res, next) => {
       name: req.user.name,
       email: req.user.email,
       role: req.user.role,
+      balance: req.user.balance,
     },
   });
 };
