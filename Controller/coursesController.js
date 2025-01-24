@@ -1,5 +1,15 @@
 const CatchAsync = require("../utils/CatchAsync");
-const course = require("../Models/courseModel");
+const Course = require("../Models/courseModel");
+const {
+  getAll,
+  createOne,
+  updateOne,
+  getOne,
+  deleteOne,
+} = require("./handleFactory");
+const Courses = require("../Models/courseModel");
+const User = require("../Models/userModel");
+
 exports.createCourse = CatchAsync(async (req, res, next) => {
   const newCourse = await Courses.create(req.body);
   const savedCourse = await newCourse.save();
@@ -18,23 +28,8 @@ exports.createCourse = CatchAsync(async (req, res, next) => {
   });
 });
 
-exports.getAllCourses = CatchAsync(async (req, res, next) => {
-  const courses = await course.find();
-  res.status(200).json({
-    status: "success",
-    results: courses.length,
-    data: {
-      courses,
-    },
-  });
-});
+exports.getAllCourses = getAll(Course);
 
-exports.createCourse = CatchAsync(async (req, res, next) => {
-  const newCourse = await course.create(req.body);
-  res.status(201).json({
-    status: "success",
-    data: {
-      course: newCourse,
-    },
-  });
-});
+exports.updateCourse = updateOne(Course); // Ensure the correct function name is used
+exports.getOneCourse = getOne(Course);
+exports.deleteCourse = deleteOne(Course);
