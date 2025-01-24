@@ -57,6 +57,12 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  courses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Courses",
+    },
+  ],
 });
 
 //=================Encrypting password==================//
