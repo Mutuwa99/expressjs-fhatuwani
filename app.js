@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+
 const userRouter = require("./routes/userRoutes");
 const courseRouter = require("./routes/coursesRoutes");
 const globalErrorHandler = require("./Controller/errorController");
