@@ -87,6 +87,11 @@ UserSchema.pre("save", function (next) {
   next();
 });
 
+UserSchema.pre(/^find/, function (next) {
+  this.populate({ path: "courses", select: "-__v" });
+  next();
+});
+
 UserSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
